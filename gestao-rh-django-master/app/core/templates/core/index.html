@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    {% if usuario.funcionario.nome %}
+    <h1 class="text-muted">Olá <strong>{{ usuario.funcionario.empresas.nome }} </strong></h1>
+
+    <div class="row text-center mt-5">
+        <div class="col-6">
+            <div class="card mb-3">
+                <img class="card-img-top" style="height: 15rem;" src="../../../../static/images/woman.svg" alt="funcionarios">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'list_funcionarios' %}">Gerenciar funcionarios</a></h5>
+                    <p class="card-text">Gerencie seus colaboradores de uma maneira rápida e eficaz</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card mb-3">
+                <img class="card-img-top" style="height: 15rem;" src="../../../../static/images/sales.svg" alt="departamentos">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'list_departamentos' %}">Gerenciar departamentos</a></h5>
+                    <p class="card-text">Gerencie os departamentos da sua empresa com agilidade</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center mt-2">
+        <div class="col-6">
+            <div class="card mb-3">
+                <img class="card-img-top" style="height: 15rem;" src="../../../../static/images/hourglass.svg" alt="funcionarios">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'list_hora_extra' %}">Gerenciar banco de horas</a></h5>
+                    <p class="card-text">Gerencie seus colaboradores de uma maneira rápida e eficaz</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card mb-3">
+                <img class="card-img-top" style="height: 15rem;" src="../../../../static/images/work.svg" alt="departamentos">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'edit_empresa' usuario.funcionario.empresas.id %}">Editar empresa</a></h5>
+                    <p class="card-text">Gerencie os departamentos da sua empresa com agilidade</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+        <h1 class="text-muted">Seja bem-vindo!</strong></h1>
+        <h3 class="text-muted">Para começar, vamos criar uma nova empresa.</h3>
+
+        <a class="btn btn-info mt-5" href="{% url 'create_empresa' %}">Criar empresa</a>
+    {% endif %}
+
+
+{% endblock %}
